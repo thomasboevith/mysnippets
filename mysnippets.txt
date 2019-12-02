@@ -1,3 +1,7 @@
 # Validate a date using GNU date
 date -d 2019-02-30 &> /dev/null; exitstatus=$?; if test $exitstatus -eq 0; then echo Valid; else echo Not valid; fi
 
+# Convert between lower case to upper case
+echo "Abc" | tr '[:upper:]' '[:lower:]'
+echo "Abc" | gawk '{print tolower($0)}'
+

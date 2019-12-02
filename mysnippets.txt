@@ -1,0 +1,3 @@
+# Validate a date using GNU date
+date -d 2019-02-30 &> /dev/null; exitstatus=$?; if test $exitstatus -eq 0; then echo Valid; else echo Not valid; fi
+

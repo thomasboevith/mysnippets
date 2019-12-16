@@ -5,3 +5,5 @@ date -d 2019-02-30 &> /dev/null; exitstatus=$?; if test $exitstatus -eq 0; then 
 echo "Abc" | tr '[:upper:]' '[:lower:]'
 echo "Abc" | gawk '{print tolower($0)}'
 
+# Join multiple PDF/ps files
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=output.pdf  file1.pdf file2.pdf file3.ps

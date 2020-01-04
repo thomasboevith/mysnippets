@@ -6,4 +6,7 @@ echo "Abc" | tr '[:upper:]' '[:lower:]'
 echo "Abc" | gawk '{print tolower($0)}'
 
 # Join multiple PDF/ps files
-gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=output.pdf  file1.pdf file2.pdf file3.ps
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=output.pdf file1.pdf file2.pdf file3.ps
+
+# Convert PNG images to animated GIF using ImageMagick and gifsicle
+convert img1.png img2.png img3.png gif:- | gifsicle --delay=100 --loop --optimize=3 -o animated.gif

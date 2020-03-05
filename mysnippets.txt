@@ -10,3 +10,6 @@ gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dAutoRotatePages=/None -sOutputFile=o
 
 # Convert PNG images to animated GIF using ImageMagick and gifsicle
 convert img1.png img2.png img3.png gif:- | gifsicle --delay=100 --loop --optimize=3 -o animated.gif
+
+# Get links from a web page
+lynx -dump -listonly -nonumbers google.com

@@ -21,3 +21,13 @@ ls -l $tmpfile
 if test -d "$tmpdir"; then
   rm -r $tmpdir  # Cleaning up
 fi
+
+# Finding nearest time intervals
+# E.g. nearest 5 minute interval from 16:28 is 16:25, nearest 10 minute interval is 16:20
+now=$(date +%s)
+echo Now: $(date -u -d@$now +%F\ %T)
+for i in $(seq 12); do
+    echo Nearest $i second interval: $(date -u -d@$(echo "scale=0; $now - ($now % $i)" | bc) +%F\ %T)
+    echo Nearest $i minute interval: $(date -u -d@$(echo "scale=0; $now - ($now % ($i * 60))" | bc) +%F\ %T)
+    echo Nearest $i hour interval: $(date -u -d@$(echo "scale=0; $now - ($now % ($i * 60 * 60))" | bc) +%F\ %T)
+done

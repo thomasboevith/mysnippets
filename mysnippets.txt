@@ -22,7 +22,7 @@ if test -d "$tmpdir"; then
   rm -r $tmpdir  # Cleaning up
 fi
 
-# Finding nearest time intervals
+# Finding nearest time intervals (rounding down)
 # E.g. nearest 5 minute interval from 16:28 is 16:25, nearest 10 minute interval is 16:20
 now=$(date +%s)
 echo Now: $(date -u -d@$now +%F\ %T)

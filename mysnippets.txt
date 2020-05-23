@@ -16,7 +16,7 @@ lynx -dump -listonly -nonumbers google.com
 
 # Using temporary directory and files
 tmpdir=$(mktemp --directory /tmp/mytmpdir.XXXXXXXX)
-tmpfile=$(mktemp --tmpdir=$mytmpdir mytmpfile.XXXXXXXX)
+tmpfile=$(mktemp --tmpdir=$tmpdir mytmpfile.XXXXXXXX)
 ls -l $tmpfile
 if test -d "$tmpdir"; then
   rm -r $tmpdir  # Cleaning up

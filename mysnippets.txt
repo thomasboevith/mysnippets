@@ -1,3 +1,8 @@
+# Rounding float value in bash
+value=3.14159
+printf '%.*f\n' 2 "$value"  # Rounded to two decimal places
+printf '%.*f\n' 3 "$value"  # Rounded to three decimal places
+
 # Org-mode to PDF with pandoc
 pandoc -s text.org -o text.pdf
 

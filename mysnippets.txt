@@ -1,3 +1,10 @@
+# Pairwise looping over arguments in bash                                                                                                                                                                                                                                                                                                                  
+#!/bin/bash
+arguments=( $@ )
+for (( i=0; i<${#arguments[@]} ; i+=2 )) ; do
+    echo "${arguments[i]}" "${arguments[i+1]}"
+done
+
 # Rounding float value in bash
 value=3.14159
 printf '%.*f\n' 2 "$value"  # Rounded to two decimal places

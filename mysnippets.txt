@@ -1,3 +1,17 @@
+# Spellchecking with hunspell and Stavekontrolden
+# 1. Download dictionary and affix files from https://stavekontrolden.dk
+# 2. Locate hunspell search paths using: hunspell -D
+# 3. Put the files in a directory in the search path
+# 4. Rename files to: da_DK.dic and da_DK.aff
+# 5. Check that the files are available using: hunspell -D
+# 6. Spellcheck using e.g.:
+>echo "colour" | hunspell -d en_GB -l
+>echo "colour" | hunspell -d en_US -l 
+colour
+>echo "stavekontrold" | hunspell -d da_DK -l 
+stavekontrold
+>echo "stavekontrol" | hunspell -d da_DK -l 
+
 # Pairwise looping over arguments in bash                                                                                                                                                                                                                                                                                                                  
 #!/bin/bash
 arguments=( $@ )

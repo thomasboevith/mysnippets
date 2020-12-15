@@ -1,3 +1,6 @@
+# Find largest directories non-recursively in bash
+find . -maxdepth 1 -type d | while read line; do if test "$line" != "."; then du -kh -sk "$line"; fi; done | sort -rn
+
 # Spellchecking with hunspell and Stavekontrolden
 # 1. Download dictionary and affix files from https://stavekontrolden.dk
 # 2. Locate hunspell search paths using: hunspell -D

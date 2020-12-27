@@ -1,3 +1,6 @@
+# Random pause from 1 to 20 seconds using sleep in bash
+sleep $[ ( $RANDOM % 20 )  + 1 ]s
+
 # Find largest directories non-recursively in bash
 find . -maxdepth 1 -type d | while read line; do if test "$line" != "."; then du -kh -sk "$line"; fi; done | sort -rn
 

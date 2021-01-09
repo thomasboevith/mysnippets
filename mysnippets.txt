@@ -1,3 +1,6 @@
+# Copy today's date to clipboard using xclip (removing newline)
+date +'%Y-%m-%d' | xargs echo -n | xclip -selection clipboard
+
 # Random pause from 1 to 20 seconds using sleep in bash
 sleep $[ ( $RANDOM % 20 )  + 1 ]s
 

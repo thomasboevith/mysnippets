@@ -1,3 +1,7 @@
+# Deleting specific files older than a specific time using find
+find /path/to/files -type f -iname 'caseinsensitivepattern.*.h5' -mtime +30 -exec echo rm -f {} \;  # Removing files older than 30 days (remove the echo statement)
+find /path/to/files -type f -iname 'caseinsensitivepattern.*.h5' -mmin +30 -exec echo rm -f {} \;  # Removing files older than 30 minutes (remove the echo statement)
+
 # Copy today's date to clipboard using xclip (removing newline)
 date +'%Y-%m-%d' | xargs echo -n | xclip -selection clipboard
 

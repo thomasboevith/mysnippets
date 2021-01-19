@@ -1,3 +1,6 @@
+# Mirroring a directory of a certain filetype from website, leaving out index.html
+ wget -q -nH --cut-dirs=1 -r -np --accept "*.h5" --reject "index.html*" http://example.com/dir/  # Cut-dirs is depth of dir
+
 # Deleting specific files older than a specific time using find
 find /path/to/files -type f -iname 'caseinsensitivepattern.*.h5' -mtime +30 -exec echo rm -f {} \;  # Removing files older than 30 days (remove the echo statement)
 find /path/to/files -type f -iname 'caseinsensitivepattern.*.h5' -mmin +30 -exec echo rm -f {} \;  # Removing files older than 30 minutes (remove the echo statement)

@@ -1,5 +1,18 @@
+# Converting between decimal and hexadecimal and doing simple arithmetics in bash
+dec1=16
+hex1=$(printf '%x\n' $dec1)
+echo $dec1 $hex1
+
+hex2=fd
+dec2=$(( 16#$hex2 ))
+echo $dec2 $hex2
+
+dec3=$(( $dec1 + $dec2 ))
+hex3=$( printf '%x\n' "$(( 16#$hex1 + 16#$hex2 ))" )
+echo $dec3 $hex3
+
 # Mirroring a directory of a certain filetype from website, leaving out index.html
- wget -q -nH --cut-dirs=1 -r -np --accept "*.h5" --reject "index.html*" http://example.com/dir/  # Cut-dirs is depth of dir
+wget -q -nH --cut-dirs=1 -r -np --accept "*.h5" --reject "index.html*" http://example.com/dir/  # Cut-dirs is depth of dir
 
 # Deleting specific files older than a specific time using find
 find /path/to/files -type f -iname 'caseinsensitivepattern.*.h5' -mtime +30 -exec echo rm -f {} \;  # Removing files older than 30 days (remove the echo statement)

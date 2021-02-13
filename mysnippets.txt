@@ -1,3 +1,18 @@
+# Bash ararys / lists
+numthreads=(1 2 4 8 16 32 64 128)
+runtimes=()
+for t in ${numthreads[@]}; do
+  #runtime=$(./pipeline --threads $t)
+  runtime=$(echo "scale=8; 1.0 / $t" | bc)
+  runtimes+=( $runtime )
+done
+
+# Loop over two bash arrays / lists
+echo "# numthreads runtimes"
+for i in "${!numthreads[@]}"; do
+    printf "%3d %.8f\n" "${numthreads[i]}" "${runtimes[i]}"
+done
+
 # Converting between decimal and hexadecimal and doing simple arithmetics in bash
 dec1=16
 hex1=$(printf '%x\n' $dec1)

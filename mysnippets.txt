@@ -1,3 +1,6 @@
+# Running a command on file change using inotify (Install using e.g. sudo apt-get install inotify-tools)
+changefile=filename.txt; while inotifywait -e close_write $changefile; do echo "File $changefile changed"; done
+
 # Bash ararys / lists
 numthreads=(1 2 4 8 16 32 64 128)
 runtimes=()

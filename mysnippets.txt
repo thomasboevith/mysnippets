@@ -112,3 +112,38 @@ for i in $(seq 12); do
     echo Nearest $i minute interval: $(date -u -d@$(echo "scale=0; $now - ($now % ($i * 60))" | bc) +%F\ %T)
     echo Nearest $i hour interval: $(date -u -d@$(echo "scale=0; $now - ($now % ($i * 60 * 60))" | bc) +%F\ %T)
 done
+
+# Find newest file based on timestamp in filename
+now=$(date +%s)     # Unix time now
+interval_s=600      # Inteval between filename timestamps
+offset_s=0          # Offset from minute count zero
+nearest=$(($now - ($now % $interval_s)))  # Nearest timestamp back in time
+backtrack_s=3600    # Search back in time for backtrack_s seconds
+end=$(($nearest-$backtrack_s))  # Last timestamp to consider back in time
+current=$nearest    # Current timestamp to check
+echo now: $(date -u -d@$now +%F\ %T)
+echo nearest: $(date -u -d@$nearest +%F\ %T)
+echo end: $(date -u -d@$end +%F\ %T)
+found=()            # Array of found files
+numtofind=2         # Maximum number to find
+numfound=0
+# Loop over filenames with timestamps
+while [ $current -ge $end ]; do   # Until end timestamp reached
+    echo current: $(date -u -d@$current +%F\ %T)
+    prefix=$(date -u -d@$current +"/path/to/file/%Y-%m-%d/name_")
+    suffix=".txt"
+    timeformat="%Y-%m-%d_%H%M"
+    filename=$prefix$(date -u -d@$current +$timeformat)$suffix
+    if [ -e "$filename" ]; then
+        found+=( $filename )
+        echo filename: $filename FOUND
+        numfound=$(($numfound+1))
+    else
+        echo filename: $filename MISSING
+    fi
+    if [ "$numfound" -ge "$numtofind" ]; then  # Break out when newest file is found
+        echo "Found the maximum number of files: ${found[@]}"
+        break
+    fi
+    current=$(($current-$interval_s))
+done

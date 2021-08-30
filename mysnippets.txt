@@ -117,7 +117,7 @@ done
 now=$(date +%s)     # Unix time now
 interval_s=600      # Inteval between filename timestamps
 offset_s=0          # Offset from minute count zero
-nearest=$(($now - ($now % $interval_s)))  # Nearest timestamp back in time
+nearest=$(($now - ($now % $interval_s) + $offset_s))  # Nearest timestamp back in time
 backtrack_s=3600    # Search back in time for backtrack_s seconds
 end=$(($nearest-$backtrack_s))  # Last timestamp to consider back in time
 current=$nearest    # Current timestamp to check

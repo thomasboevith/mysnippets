@@ -147,3 +147,11 @@ while [ $current -ge $end ]; do   # Until end timestamp reached
     fi
     current=$(($current-$interval_s))
 done
+
+# Reading a file in Python
+with open('input.txt') as f:
+    data = f.read()
+ 
+# Writing a file in Python
+with open('output.txt', 'w') as f:
+    f.write('Hello World')

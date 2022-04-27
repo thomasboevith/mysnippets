@@ -1,3 +1,10 @@
+# Check if a file is a JPEG file
+if [[ $(file -b 'image.jpg') =~ ^'JPEG ' ]]; then
+  echo "JPEG"
+else
+  echo "NOT A JPEG"
+fi
+
 # Running a command on file change using inotify (Install using e.g. sudo apt-get install inotify-tools)
 changefile=filename.txt; while inotifywait -e close_write $changefile; do echo "File $changefile changed"; done
 

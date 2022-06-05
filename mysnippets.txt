@@ -1,3 +1,8 @@
+# Crop raster images using image magick and convert to PDF using img2pdf
+# Upper left  (Lx, Ly) and lower right image coordinates (Rx, Ry) 
+for i in *.png; do Lx=486; Ly=0; Rx=2045; Ry=1169; let dx=$Rx-$Lx; let dy=$Ry-$Ly; convert $i -crop ${dx}x${dy}+$Lx+$Ly +repage cropped/$i; done
+img2pdf -o out.pdf cropped/*.png
+
 # Printing PDFs to named printer, two-sided
 for i in *.pdf; do lp -d PRINTER-NAME -o sides=two-sided-long-edge $i; done
 

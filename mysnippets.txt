@@ -1,3 +1,7 @@
+# Downscaling, normalizing and printing scanned sheet music to PDF using imagemagick and img2pdf
+for i scan_*.jpg; do convert -scale 50% -brightness-contrast 20x80 $i small/$i; done
+img2pdf small/*.jpg --output out.pdf
+
 # Crop raster images using image magick and convert to PDF using img2pdf
 # Upper left  (Lx, Ly) and lower right image coordinates (Rx, Ry) 
 for i in *.png; do Lx=486; Ly=0; Rx=2045; Ry=1169; let dx=$Rx-$Lx; let dy=$Ry-$Ly; convert $i -crop ${dx}x${dy}+$Lx+$Ly +repage cropped/$i; done

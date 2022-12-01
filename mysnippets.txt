@@ -1,6 +1,9 @@
-# Downscaling, normalizing and printing scanned sheet music to PDF using imagemagick and img2pdf
-for i scan_*.jpg; do convert -scale 50% -brightness-contrast 20x80 $i small/$i; done
+# Downscaling, normalizing, monochroming and printing scanned sheet music to PDF using imagemagick and img2pdf
+for i scan_*.jpg; do convert -grayscale average -scale 50% -brightness-contrast 20x80 $i small/$i; done
 img2pdf small/*.jpg --output out.pdf
+
+# Print A4 pages as A3 booklet (print landscape, short-edge flip on A3)
+pdfbook2 --paper=a3paper out.pdf --short-edge
 
 # Crop raster images using image magick and convert to PDF using img2pdf
 # Upper left  (Lx, Ly) and lower right image coordinates (Rx, Ry) 

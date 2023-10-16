@@ -187,3 +187,7 @@ with open('input.txt') as f:
 # Writing a file in Python
 with open('output.txt', 'w') as f:
     f.write('Hello World')
+
+# Making one pdf from multiple jpgs 
+for i in *.jpg; do imagetops $i | ps2pdf - > ${i%jpg}pdf; done; pdfunite *.pdf > all.pdf
+

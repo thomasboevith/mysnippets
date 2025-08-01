@@ -191,3 +191,6 @@ with open('output.txt', 'w') as f:
 # Making one pdf from multiple jpgs 
 for i in *.jpg; do imagetops $i | ps2pdf - > ${i%jpg}pdf; done; pdfunite *.pdf > all.pdf
 
+# Clean a string to only contain A-z0-9_-
+echo 'String !#¤_%&/ 1234 æøåÆØÅé-5678' | tr -cd 'A-Za-z0-9_-'
+
